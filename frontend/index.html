@@ -7,68 +7,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Intro Section -->
-  <section class="intro">
-    <div class="intro-content">
-      <h1>Predictive Analytics for Social Media Virality</h1>
-      <p>Get a virality score based on key metrics like likes and shares to optimize content reach.</p>
+    <div class="main">
+        <div class="intro-content">
+            <h1>Predcitive Analysis for <br> Social Media Virality</h1>
+            <p>Get a virality score based on key metrics like likes and shares to optimise content reach</p>
+        </div>
     </div>
-  </section>
-
-  <!-- What We Offer Section -->
-  <section class="what-we-offer">
-    <h2>What We Offer</h2>
-    <div class="services">
-      <div class="service" id="virality" onclick="showTool('virality')">
-        <img src="images/Social Media Picture (1).jpeg" alt="Virality Prediction">
-        <h3>Virality Prediction</h3>
-      </div>
-      <div class="service" id="influencer" onclick="showTool('influencer')">
-        <img src="images/Social Media Picture (4).jpeg" alt="Influencer Prediction">
-        <h3>Influencer Prediction</h3>
-      </div>
-      <div class="service" id="diffusion" onclick="showTool('diffusion')">
-        <img src="images/Social Media Picture (6).jpeg" alt="Diffusion Prediction">
-        <h3>Diffusion Prediction</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- Virality Prediction Tool -->
-  <section id="virality-tool" class="tool-section hidden">
-    <h2>Virality Prediction Tool</h2>
-    <input type="number" id="likes" placeholder="Enter Number of Likes">
-    <input type="number" id="shares" placeholder="Enter Number of Shares">
-    <input type="number" id="comments" placeholder="Enter Number of Comments">
-    <input type="number" id="weak-ties" placeholder="Enter Weak Ties Score">
-    <button onclick="predictVirality()">Predict Virality</button>
-    <div id="virality-result" class="result-box">Virality Score: <span id="virality-score"></span></div>
-  </section>
-
-  <!-- Influencer Identification Tool -->
-  <section id="influencer-tool" class="tool-section hidden">
-    <h2>Influencer Identification Model</h2>
-    <input type="number" id="followers" placeholder="Enter Number of Followers">
-    <input type="number" id="posts" placeholder="Enter Number of Posts">
-    <input type="number" id="likes-influencer" placeholder="Enter Number of Likes">
-    <input type="number" id="comments-influencer" placeholder="Enter Number of Comments">
-    <input type="number" id="engagement-rate" placeholder="Enter Engagement Rate (%)">
-    <button onclick="identifyInfluencer()">Get Influencer Score</button>
-    <div id="influencer-result" class="result-box">Influencer Score: <span id="influencer-score"></span></div>
-  </section>
-
-  <!-- Diffusion Prediction Tool -->
-  <section id="diffusion-tool" class="tool-section hidden">
-    <h2>Diffusion Prediction Model</h2>
-    <input type="number" id="likes-diffusion" placeholder="Enter Number of Likes">
-    <input type="number" id="shares-diffusion" placeholder="Enter Number of Shares">
-    <input type="number" id="comments-diffusion" placeholder="Enter Number of Comments">
-    <input type="number" id="engagement-rate-diffusion" placeholder="Enter Engagement Rate (%)">
-    <button onclick="predictDiffusion()">Predict Diffusion</button>
-    <div id="diffusion-result" class="result-box">Misinformation Status: <span id="diffusion-status"></span></div>
-  </section>
-
-  <script src="script.js"></script>
 </body>
 </html>
