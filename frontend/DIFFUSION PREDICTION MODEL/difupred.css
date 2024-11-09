@@ -43,9 +43,7 @@ body, html {
     margin-bottom: 30px;
     text-transform: uppercase;
     color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    white-space: nowrap; /* Prevents text from wrapping to a new line */
 }
 
 .form-container label {
@@ -84,4 +82,10 @@ body, html {
 
 .form-container button:hover {
     background-color: #b71c1c;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #FFFFFF;
 }

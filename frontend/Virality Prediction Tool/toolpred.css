@@ -1,4 +1,3 @@
-/* Basic reset */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +11,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('Back.jpg') no-repeat center center fixed; /* Background image */
+    background: url('Back.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #FFFFFF;
 }
@@ -23,11 +22,11 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .form-container {
-    text-align: center; /* Center-aligns text within the container */
+    text-align: center;
     max-width: 500px;
     width: 100%;
     padding: 40px;
@@ -43,10 +42,6 @@ body, html {
     margin-bottom: 30px;
     text-transform: uppercase;
     color: #FFFFFF;
-    white-space: nowrap; /* Prevents text from wrapping to a new line */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Strictly center-aligns the heading */
 }
 
 .form-container label {
@@ -56,7 +51,6 @@ body, html {
     text-transform: uppercase;
     color: #FFFFFF;
     text-align: left;
-    width: 100%;
 }
 
 .form-container input {
