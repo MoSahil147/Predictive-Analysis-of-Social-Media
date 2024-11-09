@@ -3,55 +3,121 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
-/* Full-page background styling */
 body, html {
     height: 100%;
     width: 100%;
     font-family: Arial, sans-serif;
-    color: #FFFF00; /* Yellow color for text */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('intro.jpg') no-repeat center center fixed; /* Background image */
-    background-size: cover;
-    filter: brightness(1.2); /* Increase brightness by 20% */
+    color: #FFFF00;
 }
 
-/* Full-screen overlay with centered content */
+/* Intro section with parallax effect and reduced brightness */
 .main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    min-height: 100vh;
+    background: url('intro.jpg') no-repeat center center fixed;
+    background-size: cover;
     text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding: 50px 20px;
+    position: relative;
+    transition: background-position 0.3s ease; /* Smooth parallax effect */
+    filter: brightness(0.8); /* Reduce brightness to 80% */
 }
 
-/* Content styling */
 .intro-content {
-    color: #FFFF00; /* Yellow color for text */
+    color: #FFFF00;
     padding: 20px;
     animation: fadeIn 2s ease-in-out;
+    margin-bottom: 50px;
 }
 
-/* Title styling */
 .intro-content h1 {
     font-size: 3em;
     font-weight: bold;
     line-height: 1.2;
     margin-bottom: 20px;
     letter-spacing: 2px;
+    text-transform: uppercase; /* Capitalize text */
 }
 
-/* Paragraph styling */
 .intro-content p {
     font-size: 1.5em;
+    font-weight: 300;
+}
+
+/* Divider between sections */
+.divider {
+    width: 100%;
+    height: 5px;
+    background-color: #333;
+}
+
+/* "What We Offer" section styling */
+.container {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    background-color: #000;
+    color: #ffffff;
+}
+
+.container h1 {
+    font-size: 2.5em;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-weight: bold; /* Make text bold */
+    text-transform: uppercase; /* Capitalize text */
+}
+
+/* Offer section styling */
+.offer-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.offer-card {
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 30%;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.offer-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.offer-card img {
+    width: 100%;
+    height: auto;
+}
+
+.offer-info {
+    padding: 20px;
+    background-color: #d32f2f;
+    color: #fff;
+    text-align: center;
+}
+
+.offer-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.offer-info p {
+    font-size: 1em;
     font-weight: 300;
 }
 
@@ -59,4 +125,26 @@ body, html {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Parallax effect for intro background */
+.main {
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .offer-section {
+        flex-direction: column;
+    }
+
+    .offer-card {
+        width: 100%;
+    }
 }
