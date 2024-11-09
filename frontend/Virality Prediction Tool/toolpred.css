@@ -1,3 +1,4 @@
+/* Basic reset */
 * {
     margin: 0;
     padding: 0;
@@ -79,4 +80,36 @@ body, html {
 
 .form-container button:hover {
     background-color: #b71c1c;
+}
+
+.score-container {
+    text-align: center;
+}
+
+.score-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#score-box {
+    padding: 20px 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #d32f2f;
+    border-radius: 5px;
+    display: inline-block;
+    text-transform: uppercase;
+    opacity: 0; /* Start hidden */
+    transform: scale(0.5); /* Start smaller */
+    animation: fadeInScale 1s forwards; /* Trigger animation */
+}
+
+/* Animation for fade-in and scale-up */
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
