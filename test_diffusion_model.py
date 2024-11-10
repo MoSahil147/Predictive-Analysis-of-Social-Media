@@ -1,19 +1,18 @@
-# test_diffusion_model.py
-
 import joblib
-import numpy as np
 
-# Load the trained Diffusion Prediction model
-model = joblib.load("backend/models/diffusion_model.pkl")
+# Load the trained model
+model = joblib.load('backend/models/diffusion_model.pkl')
 
-# Sample data with varied inputs for testing
-sample_data_list = [
-    np.array([[300, 50, 20, 4.0]]),     # Lower spread, likely not misinformation
-    np.array([[5000, 2000, 1500, 9.5]]), # High spread, potential misinformation
-    np.array([[1000, 300, 200, 6.8]])   # Moderate spread, uncertain misinformation
-]
+# Get user input for each feature needed for misinformation prediction
+print("Enter values for Diffusion Prediction:")
+likes = int(input("Number of Likes (e.g., 300): "))
+shares = int(input("Number of Shares (e.g., 25): "))
+comments = int(input("Number of Comments (e.g., 40): "))
+engagement_rate = float(input("Engagement Rate (e.g., 5.0): "))
 
-# Predict and display misinformation status for each sample
-for i, sample_data in enumerate(sample_data_list, start=1):
-    prediction = model.predict(sample_data)
-    print(f"Misinformation Prediction {i} (1 = Misinformation, 0 = Not Misinformation):", prediction[0])
+# Prepare the input data
+sample_data = [[likes, shares, comments, engagement_rate]]
+
+# Make a prediction and display the result as a percentage
+probability = model.predict_proba(sample_data)[0][1]
+print(f"Misinformation Prediction: {probability * 100:.2f}%")

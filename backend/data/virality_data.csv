@@ -1,4 +1,4 @@
-likes,shares,comments,weak_ties,is_viral
+likes,shares,comments,weak_ties,virality_label
 7270,2686,2407,6.884877913115593,0
 860,2895,822,8.308372511591529,1
 5390,4535,3702,4.088138900734103,0
