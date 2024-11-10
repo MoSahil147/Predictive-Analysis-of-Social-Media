@@ -1,37 +1,63 @@
-# app.py
-from flask import Flask, request, jsonify
-import joblib
+# app.py in the backend folder
 
-app = Flask(__name__)
+from fastapi import FastAPI
+from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
-# Load models
-virality_model = joblib.load("backend/models/virality_model.pkl")
-influencer_model = joblib.load("backend/models/influencer_model.pkl")
-diffusion_model = joblib.load("backend/models/diffusion_model.pkl")
+# Initialize the FastAPI app
+app = FastAPI()
 
-# Virality Prediction API
-@app.route('/predict_virality', methods=['POST'])
-def predict_virality():
-    data = request.get_json()
-    features = [[data['likes'], data['shares'], data['comments']]]
-    prediction = virality_model.predict(features)[0]
-    return jsonify({"virality_score": prediction})
+# Add CORS middleware to allow frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust according to your frontend URL if needed
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# Influencer Prediction API
-@app.route('/predict_influencer', methods=['POST'])
-def predict_influencer():
-    data = request.get_json()
-    features = [[data['followers'], data['posts'], data['likes'], data['comments'], data['shares'], data['engagement_rate']]]
-    prediction = influencer_model.predict(features)[0]
-    return jsonify({"is_influencer": bool(prediction)})
+# Define request model for Virality
+class ViralityRequest(BaseModel):
+    likes: float
+    shares: float
+    comments: float
+    weakTies: float
 
-# Misinformation Detection API
-@app.route('/predict_diffusion', methods=['POST'])
-def predict_diffusion():
-    data = request.get_json()
-    features = [[data['likes'], data['shares'], data['comments'], data['engagement_rate']]]
-    prediction = diffusion_model.predict(features)[0]
-    return jsonify({"is_misinformation": bool(prediction)})
+# Define request model for Influencer
+class InfluencerRequest(BaseModel):
+    followers: float
+    posts: float
+    likes: float
+    comments: float
+    engagementRate: float
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Define request model for Diffusion (Misinformation)
+class DiffusionRequest(BaseModel):
+    likes: float
+    shares: float
+    comments: float
+    engagementRate: float
+
+# Define /virality endpoint
+@app.post("/virality")
+async def calculate_virality(data: ViralityRequest):
+    # Example calculation logic for virality score
+    score = (data.likes + data.shares + data.comments + data.weakTies) / 4
+    virality_score = min(max(score, 0), 100)  # Clamp score between 0 and 100
+    return {"viralityScore": round(virality_score, 2)}
+
+# Define /influencer endpoint
+@app.post("/influencer")
+async def calculate_influencer(data: InfluencerRequest):
+    # Example calculation logic for influencer score
+    score = (data.followers + data.posts + data.likes + data.comments + data.engagementRate) / 5
+    influencer_score = min(max(score, 0), 100)  # Clamp score between 0 and 100
+    return {"influencerScore": round(influencer_score, 2)}
+
+# Define /diffusion endpoint
+@app.post("/diffusion")
+async def calculate_diffusion(data: DiffusionRequest):
+    # Example calculation logic for misinformation score
+    score = (data.likes + data.shares + data.comments + data.engagementRate) / 4
+    misinformation_score = min(max(score, 0), 100)  # Clamp score between 0 and 100
+    return {"misinformationScore": round(misinformation_score, 2)}

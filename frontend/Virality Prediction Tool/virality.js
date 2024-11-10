@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("virality-form");
     const resultContainer = document.getElementById("result");
-    const formContainer = document.getElementById("form-container");
-    const scoreContainer = document.getElementById("score-container");
-    const scoreBox = document.getElementById("score-box");
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -25,39 +22,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // Send data to backend
-            const response = await fetch("YOUR_BACKEND_URL/virality", {
+            const response = await fetch("http://127.0.0.1:8000/virality", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
             const result = await response.json();
 
-            // Hide form and display score section
-            formContainer.style.display = "none";
-            scoreContainer.style.display = "block";
+            // Store the result in local storage or session storage
+            localStorage.setItem("viralityScore", result.viralityScore);
 
-            // Animate the score
-            animateScore(result.viralityScore || 90); // Use the received score, default to 90 if not available
+            // Redirect to the score page (Update path according to structure)
+            window.location.href = 'Virality Score/virality_score.html';
         } catch (error) {
             resultContainer.textContent = "Error connecting to backend.";
         }
     });
-
-    function animateScore(finalScore) {
-        let currentScore = 0;
-        const animationDuration = 2000; // Duration in ms (2 seconds)
-        const increment = finalScore / (animationDuration / 20);
-
-        function updateScore() {
-            if (currentScore < finalScore) {
-                currentScore += increment;
-                scoreBox.textContent = `Score: ${Math.floor(currentScore)}%`;
-                requestAnimationFrame(updateScore);
-            } else {
-                scoreBox.textContent = `Score: ${finalScore}%`; // Ensure it ends exactly at the final score
-            }
-        }
-
-        setTimeout(updateScore, 500); // Delay to allow fade-in effect to start first
-    }
 });

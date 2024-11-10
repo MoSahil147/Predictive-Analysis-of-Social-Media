@@ -1,9 +1,5 @@
 fastapi
 uvicorn
-numpy
+joblib
 pandas
 scikit-learn
-joblib
-onnxruntime
-pydantic
-skl2onnx

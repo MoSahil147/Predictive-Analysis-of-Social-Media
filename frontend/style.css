@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth; /* Smooth scrolling */
+    scroll-behavior: smooth;
 }
 
 body, html {
@@ -13,7 +13,7 @@ body, html {
     color: #FFFF00;
 }
 
-/* Intro section with parallax effect and reduced brightness */
+/* Intro section with scrolling background */
 .main {
     display: flex;
     flex-direction: column;
@@ -21,12 +21,10 @@ body, html {
     justify-content: center;
     width: 100%;
     min-height: 100vh;
-    background: url('intro.jpg') no-repeat center center fixed;
+    background: url('intro.jpg') no-repeat center center;
     background-size: cover;
     text-align: center;
     padding: 50px 20px;
-    position: relative;
-    transition: background-position 0.3s ease; /* Smooth parallax effect */
     filter: brightness(0.8); /* Reduce brightness to 80% */
 }
 
@@ -43,7 +41,7 @@ body, html {
     line-height: 1.2;
     margin-bottom: 20px;
     letter-spacing: 2px;
-    text-transform: uppercase; /* Capitalize text */
+    text-transform: uppercase;
 }
 
 .intro-content p {
@@ -61,8 +59,7 @@ body, html {
 /* "What We Offer" section styling */
 .container {
     text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
     padding: 50px 20px;
     background-color: #000;
     color: #ffffff;
@@ -72,26 +69,34 @@ body, html {
     font-size: 2.5em;
     color: #ffffff;
     margin-bottom: 40px;
-    font-weight: bold; /* Make text bold */
-    text-transform: uppercase; /* Capitalize text */
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 /* Offer section styling */
 .offer-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly; /* Even spacing between cards */
     gap: 20px;
+    flex-wrap: wrap; /* Wrap items on smaller screens */
 }
 
 .offer-card {
-    background-color: #fff;
-    color: #000;
+    background-color: #000;
+    color: #fff;
     border-radius: 8px;
     overflow: hidden;
-    width: 30%;
+    width: 100%;
+    max-width: 300px;
+    flex: 1 1 300px; /* Flex-grow to maintain equal width */
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 450px;
+    margin: 10px; /* Margin to ensure spacing is consistent */
 }
 
 .offer-card:hover {
@@ -101,7 +106,8 @@ body, html {
 
 .offer-card img {
     width: 100%;
-    height: auto;
+    height: 250px;
+    object-fit: cover;
 }
 
 .offer-info {
@@ -109,6 +115,7 @@ body, html {
     background-color: #d32f2f;
     color: #fff;
     text-align: center;
+    width: 100%;
 }
 
 .offer-info h2 {
@@ -127,24 +134,15 @@ body, html {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Parallax effect for intro background */
-.main {
-    background-attachment: fixed;
-    background-position: center center;
-    background-size: cover;
-}
-
-body {
-    scroll-behavior: smooth;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .offer-section {
         flex-direction: column;
+        align-items: center;
     }
 
     .offer-card {
-        width: 100%;
+        width: 80%;
+        margin-bottom: 20px;
     }
 }

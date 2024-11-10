@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virality Score</title>
-  <link rel="stylesheet" href="virality_score.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virality Score</title>
+    <link rel="stylesheet" href="virality_score.css">
 </head>
 <body>
     <div class="score-container">
@@ -12,6 +12,17 @@
         <div id="score-box">Score</div>
     </div>
 
-    <script src="virality_score.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const scoreBox = document.getElementById("score-box");
+            const viralityScore = localStorage.getItem("viralityScore");
+
+            if (viralityScore) {
+                scoreBox.textContent = `Score: ${viralityScore}%`;
+            } else {
+                scoreBox.textContent = "Score not available.";
+            }
+        });
+    </script>
 </body>
 </html>

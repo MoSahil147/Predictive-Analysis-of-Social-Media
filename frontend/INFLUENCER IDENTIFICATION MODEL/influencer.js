@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
-    const resultContainer = document.createElement("div");
-    resultContainer.id = "result";
-    form.appendChild(resultContainer);
+    const resultContainer = document.getElementById("result");
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -19,14 +17,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const data = { followers, posts, likes, comments, engagementRate };
+
         try {
-            const response = await fetch("YOUR_BACKEND_URL/influencer", {
+            const response = await fetch("http://127.0.0.1:8000/influencer", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
+
+            if (!response.ok) {
+                throw new Error("Failed to connect to backend");
+            }
+
             const result = await response.json();
-            resultContainer.textContent = `Influencer Status: ${result.status}`;
+
+            // Store the influencer score in sessionStorage for display in influencer_score.html
+            sessionStorage.setItem("influencerScore", result.influencerScore);
+
+            // Redirect to the influencer_score.html page
+            window.location.href = "Influencer%20Score/influencer_score.html";
         } catch (error) {
             resultContainer.textContent = "Error connecting to backend.";
         }

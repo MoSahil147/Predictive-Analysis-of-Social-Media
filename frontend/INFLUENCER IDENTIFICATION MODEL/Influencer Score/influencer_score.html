@@ -12,6 +12,18 @@
         <div id="score-box">Score</div>
     </div>
 
-    <script src="influencer_score.js"></script>
+    <script>
+        // Display the influencer score from sessionStorage
+        document.addEventListener("DOMContentLoaded", () => {
+            const scoreBox = document.getElementById("score-box");
+            const influencerScore = sessionStorage.getItem("influencerScore");
+
+            if (influencerScore) {
+                scoreBox.textContent = `Score: ${influencerScore}%`;
+            } else {
+                scoreBox.textContent = "No score available.";
+            }
+        });
+    </script>
 </body>
 </html>

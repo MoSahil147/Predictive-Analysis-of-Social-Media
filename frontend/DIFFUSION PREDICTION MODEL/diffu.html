@@ -10,7 +10,8 @@
     <div class="background">
         <div class="form-container">
             <h1>DIFFUSION PREDICTION MODEL</h1>
-            <form>
+            <!-- Add an ID to your form for JavaScript targeting -->
+            <form id="diffusion-form">
                 <label for="likes">Enter Number of Likes</label>
                 <input type="number" id="likes" name="likes" step="0.01" required>
 
@@ -23,6 +24,7 @@
                 <label for="engagement-rate">Enter Engagement Rate (%)</label>
                 <input type="number" id="engagement-rate" name="engagement-rate" step="0.1" required>
 
+                <!-- Set button type to "submit" -->
                 <button type="submit">Misinformation Status</button>
             </form>
             <div id="result"></div> <!-- Container for displaying the result -->
