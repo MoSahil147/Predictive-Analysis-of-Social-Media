@@ -1,18 +1,19 @@
 # app.py in the backend folder
 
-from fastapi import FastAPI
-from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI #helps in making app
+from pydantic import BaseModel #helps describe the questions the app can understand
+from fastapi.middleware.cors import CORSMiddleware # CORS lets app communicate to other apps on other computers
 
 # Initialize the FastAPI app
 app = FastAPI()
 
-# Add CORS middleware to allow frontend access
+# Add CORS middleware to allow frontend access, act as a friendly helper, lets app communicate to websites from other computer
+# Answer questions from anyone, no matter where they are. Remember who’s asking the question. Answer any kind of question, not just certain ones. See all the details that might come with a question.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust according to your frontend URL if needed
-    allow_credentials=True,
-    allow_methods=["*"],
+    allow_origins=["*"],  #allow questions from any computer
+    allow_credentials=True, #allow extra like cookies
+    allow_methods=["*"], #allow any type of question
     allow_headers=["*"],
 )
 
@@ -41,7 +42,7 @@ class DiffusionRequest(BaseModel):
 # Define /virality endpoint
 @app.post("/virality")
 async def calculate_virality(data: ViralityRequest):
-    # Example calculation logic for virality score
+    # calculating logic for virality score
     score = (data.likes + data.shares + data.comments + data.weakTies) / 4
     virality_score = min(max(score, 0), 100)  # Clamp score between 0 and 100
     return {"viralityScore": round(virality_score, 2)}
