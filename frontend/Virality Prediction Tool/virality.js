@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Add a 'submit' event listener to the form
     form.addEventListener("submit", async (e) => {
-        // Prevent the default behavior of the form submission (like page reload)
+        // Prevents from default page reload thing
         e.preventDefault();
 
         // Get values from the input fields and convert them to floating-point numbers
