@@ -1,64 +1,66 @@
-# app.py in the backend folder
+# Import FastAPI to create the app
+from fastapi import FastAPI 
 
-from fastapi import FastAPI #helps in making app
-from pydantic import BaseModel #helps describe the questions the app can understand
-from fastapi.middleware.cors import CORSMiddleware # CORS lets app communicate to other apps on other computers
+# Import BaseModel from Pydantic to define the structure of the data received in requests
+from pydantic import BaseModel 
+
+# Import CORS middleware to handle cross-origin resource sharing
+from fastapi.middleware.cors import CORSMiddleware 
 
 # Initialize the FastAPI app
 app = FastAPI()
 
-# Add CORS middleware to allow frontend access, act as a friendly helper, lets app communicate to websites from other computer
-# Answer questions from anyone, no matter where they are. Remember who’s asking the question. Answer any kind of question, not just certain ones. See all the details that might come with a question.
+# Add CORS middleware to allow the app to communicate with a frontend or other services on different domains
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  #allow questions from any computer
-    allow_credentials=True, #allow extra like cookies
-    allow_methods=["*"], #allow any type of question
-    allow_headers=["*"],
+    allow_origins=["*"],  # Allow requests from any origin (any computer or domain)
+    allow_credentials=True,  # Allow credentials like cookies in the request
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers in the request
 )
 
-# Define request model for Virality
+# Define the data model for the /virality endpoint using Pydantic's BaseModel
 class ViralityRequest(BaseModel):
-    likes: float
-    shares: float
-    comments: float
-    weakTies: float
+    likes: float  # Number of likes (expects a floating-point number)
+    shares: float  # Number of shares
+    comments: float  # Number of comments
+    weakTies: float  # Measure of weak ties (a parameter related to virality)
 
-# Define request model for Influencer
+# Define the data model for the /influencer endpoint
 class InfluencerRequest(BaseModel):
-    followers: float
-    posts: float
-    likes: float
-    comments: float
-    engagementRate: float
+    followers: float  # Number of followers
+    posts: float  # Number of posts
+    likes: float  # Number of likes
+    comments: float  # Number of comments
+    engagementRate: float  # Engagement rate as a percentage
 
-# Define request model for Diffusion (Misinformation)
+# Define the data model for the /diffusion endpoint
 class DiffusionRequest(BaseModel):
-    likes: float
-    shares: float
-    comments: float
-    engagementRate: float
+    likes: float  # Number of likes
+    shares: float  # Number of shares
+    comments: float  # Number of comments
+    engagementRate: float  # Engagement rate as a percentage
 
-# Define /virality endpoint
+# Define the /virality endpoint to calculate the virality score
 @app.post("/virality")
 async def calculate_virality(data: ViralityRequest):
-    # calculating logic for virality score
+    # Calculate the virality score using a simple average formula
     score = (data.likes + data.shares + data.comments + data.weakTies) / 4
-    virality_score = min(max(score, 0), 100)  # Clamp score between 0 and 100
-    return {"viralityScore": round(virality_score, 2)}
+    virality_score = min(max(score, 0), 100)  # Clamp the score between 0 and 100
+    return {"viralityScore": round(virality_score, 2)}  # Return the score rounded to two decimal places
 
-# Define /influencer endpoint
+# Define the /influencer endpoint to calculate the influencer score
 @app.post("/influencer")
 async def calculate_influencer(data: InfluencerRequest):
-    # Example calculation logic for influencer score
+    # Calculate the influencer score using a simple average formula
     score = (data.followers + data.posts + data.likes + data.comments + data.engagementRate) / 5
-    influencer_score = min(max(score, 0), 100)  # Clamp score between 0 and 100
-    return {"influencerScore": round(influencer_score, 2)}
+    influencer_score = min(max(score, 0), 100)  # Clamp the score between 0 and 100
+    return {"influencerScore": round(influencer_score, 2)}  # Return the score rounded to two decimal places
 
-# Define /diffusion endpoint
+# Define the /diffusion endpoint to calculate the misinformation score
 @app.post("/diffusion")
 async def calculate_diffusion(data: DiffusionRequest):
-    # Example calculation logic for misinformation score
+    # Calculate the misinformation score using a simple average formula
     score = (data.likes + data.shares + data.comments + data.engagementRate) / 4
-    misinformation_score = min(max(score, 0), 100)  # Clamp score between 0 and 100
-    return {"misinformationScore": round(misinformation_score, 2)}
+    misinformation_score = min(max(score, 0), 100)  # Clamp the score between 0 and 100
+    return {"misinformationScore": round(misinformation_score, 2)}  # Return the score rounded to two decimal places

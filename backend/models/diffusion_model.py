@@ -1,49 +1,24 @@
-# models/diffusion_model.py
-
-from sklearn.ensemble import RandomForestClassifier
-import joblib
+from sklearn.ensemble import RandomForestClassifier  # Import Random Forest model
+import joblib  # For saving and loading the model
 
 class DiffusionModel:
     def __init__(self):
-        # Initialize a basic Random Forest model
+        # Initialize a Random Forest classifier
+        # Random Forest is chosen for its robustness and ability to handle noisy data effectively
         self.model = RandomForestClassifier()
 
     def fit(self, X, y):
-        """
-        Train the diffusion model.
-        
-        Args:
-            X (DataFrame): Training features.
-            y (Series): Training target.
-        """
+        # Train the model using features (X) and target labels (y)
         self.model.fit(X, y)
 
     def predict(self, X):
-        """
-        Predict using the diffusion model.
-        
-        Args:
-            X (DataFrame): Test features.
-            
-        Returns:
-            Series: Predicted labels.
-        """
+        # Predict labels for the given test features (X)
         return self.model.predict(X)
 
     def save(self, path):
-        """
-        Save the model to a file.
-        
-        Args:
-            path (str): Path to save the model.
-        """
+        # Save the trained model to a file for later use
         joblib.dump(self.model, path)
 
     def load(self, path):
-        """
-        Load the model from a file.
-        
-        Args:
-            path (str): Path to load the model from.
-        """
+        # Load a saved model from a file to make predictions
         self.model = joblib.load(path)

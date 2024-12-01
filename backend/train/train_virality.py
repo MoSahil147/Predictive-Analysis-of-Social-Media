@@ -1,29 +1,35 @@
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-import joblib
-import os
+# Import preprocessing functions and necessary libraries
+from backend.preprocess.virality_preprocess import load_data, preprocess_data  # Functions for loading and preprocessing data
+from xgboost import XGBRegressor  # Import XGBoost for training the regression model
+import joblib  # Library for saving the trained model
 
 def train_virality_model():
-    # Load dataset (replace with actual path and data)
-    data = pd.DataFrame({
-        "likes": [100, 200, 300],
-        "shares": [10, 20, 30],
-        "comments": [5, 15, 25],
-        "weak_ties": [0.5, 0.7, 0.8],
-        "virality_score": [40, 50, 60]  # Placeholder target column
-    })
+    """
+    Train the virality prediction model.
+    """
+    # Step 1: Load the dataset from the specified CSV file
+    df = load_data('backend/data/virality_data.csv')  # Ensure the path points to the correct CSV file
+    
+    # Step 2: Preprocess the data
+    # Split the dataset into features (X) and target (y) using preprocessing functions
+    X, y = preprocess_data(df)
 
-    X = data[["likes", "shares", "comments", "weak_ties"]]
-    y = data["virality_score"]
+    # Step 3: Initialize and configure the XGBoost regressor
+    model = XGBRegressor(
+        objective='reg:squarederror',  # Objective function for regression problems
+        n_estimators=100,  # Number of trees in the ensemble
+        learning_rate=0.1,  # Step size for weight updates
+        max_depth=6  # Maximum depth of each tree
+    )
+    
+    # Step 4: Train the model on the preprocessed data
+    model.fit(X, y)  # Fit the model using features (X) and target (y)
 
-    model = LinearRegression()
-    model.fit(X, y)
+    # Step 5: Save the trained model to the specified path
+    joblib.dump(model, 'backend/models/virality_model.pkl')  # Save the model as a .pkl file for reuse
+    print("Virality prediction model trained and saved.")  # Inform the user that the model is saved
 
-    # Save the model
-    MODEL_DIR = os.path.join("backend", "models")
-    os.makedirs(MODEL_DIR, exist_ok=True)
-    joblib.dump(model, os.path.join(MODEL_DIR, "virality_model.pkl"))
-    print("Model trained and saved to backend/models/virality_model.pkl")
-
+# Entry point for the script
 if __name__ == "__main__":
+    # Execute the training function only if the script is run directly
     train_virality_model()

@@ -1,5 +1,3 @@
-# backend/preprocess/diffusion_preprocess.py
-
 import pandas as pd
 
 def load_data(filepath):
