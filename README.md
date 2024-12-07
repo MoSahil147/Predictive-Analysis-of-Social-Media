@@ -24,32 +24,32 @@ git clone https://github.com/MoSahil147/social-media-analytics.git
 cd social-media-analytics
 ```
 
-###Step 2: Backend Setup
+### Step 2: Backend Setup
 ```bash
 cd backend
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt 
 ```
-###Step 3: Frontend Setup
+### Step 3: Frontend Setup
 ```bash
 cd ../frontend
 npm install
 ```
-###Step 4: Train Model
+### Step 4: Train Model
 ```bash
 python backend/train/train_virality.py
 python backend/train/train_influencer.py
 python backend/train/train_diffusion.py
 ```
-###Step 5: Start the Backend
+### Step 5: Start the Backend
 ```bash
 cd backend
 uvicorn app:app --reload
 ```
 The backend will run at http://127.0.0.1:8000
 
-###Step 6: Start the Frontend
+### Step 6: Start the Frontend
 ```bash
 cd ../frontend
 npm start
