@@ -1,5 +1,8 @@
 # Import preprocessing functions and necessary libraries
-from backend.preprocess.influencer_preprocess import load_data, preprocess_data  # For data loading and preprocessing
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from backend.preprocess.influencer_preprocess import load_data, preprocess_data
 from xgboost import XGBClassifier  # Import XGBoost for training the model
 import joblib  # For saving the trained model
 

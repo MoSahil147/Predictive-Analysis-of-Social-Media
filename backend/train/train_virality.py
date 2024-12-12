@@ -1,5 +1,9 @@
 # Import preprocessing functions and necessary libraries
-from backend.preprocess.virality_preprocess import load_data, preprocess_data  # Functions for loading and preprocessing data
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from backend.preprocess.virality_preprocess import load_data, preprocess_data
+
 from xgboost import XGBRegressor  # Import XGBoost for training the regression model
 import joblib  # Library for saving the trained model
 
