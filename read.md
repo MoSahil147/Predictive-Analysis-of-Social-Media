@@ -24,8 +24,14 @@ python backend/train/train_virality.py
 python backend/train/train_influencer.py
 python backend/train/train_diffusion.py
 ```
+### Step 4: Train Model
+```bash
+python backend/evaluation/calculate_virality_metrics.py
+python backend/evaluation/calculate_influencer_metrics.py
+python backend/evaluation/calculate_diffusion_metrics.py
+```
 
-### Step 4: Start the Backend
+### Step 5: Start the Backend
 ```bash
 cd backend
 uvicorn app:app --reload
@@ -33,7 +39,7 @@ uvicorn app:app --reload
 
 The backend will run at http://127.0.0.1:8000
 
-### Step 5: Start the Frontend
+### Step 6: Start the Frontend
 ```bash
 cd ../frontend
 npm start
