@@ -44,7 +44,7 @@ python backend/train/train_virality.py
 python backend/train/train_influencer.py
 python backend/train/train_diffusion.py
 ```
-### Step 4: Train Model
+### Step 4: Evaluation Metrics Results
 ```bash
 python backend/evaluation/calculate_virality_metrics.py
 python backend/evaluation/calculate_influencer_metrics.py
