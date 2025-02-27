@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("viralityScore", result.viralityScore);
 
             // Redirect the user to the virality score page (adjust path as necessary)
-            window.location.href = 'Virality Score/virality_score.html';
+            window.location.href = 'virality_score.html';
         } catch (error) {
             // If there's an error (e.g., network issue), display an error message
             resultContainer.textContent = "Error connecting to backend.";

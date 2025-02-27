@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Add an event listener for the form's 'submit' event
     form.addEventListener("submit", async (e) => {
-        // Prevent the default form submission behavior like page reload
+        // Prevent the default form submission behavior (like page reload)
         e.preventDefault();
 
         // Retrieve and convert the form input values to floating-point numbers
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             sessionStorage.setItem("influencerScore", result.influencerScore);
 
             // Redirect the user to a new page to display the influencer score
-            window.location.href = "Influencer%20Score/influencer_score.html";
+            window.location.href = "influencer_score.html";
         } catch (error) {
             // Handle errors (e.g., network issues) by displaying an error message
             resultContainer.textContent = "Error connecting to backend.";
