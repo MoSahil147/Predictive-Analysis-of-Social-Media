@@ -53,30 +53,6 @@ Once the server is running, open your browser and go to:
 - **API Documentation (Swagger UI):** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - **Redoc UI:** [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
-## Project Structure
-```
-📂 social-media-virality
- ┣ 📂 backend
- ┃ ┣ 📜 app.py  # FastAPI application entry point
- ┃ ┣ 📜 models.py  # ML models for virality prediction
- ┃ ┣ 📜 database.py  # Database connection
- ┃ ┗ 📜 routes.py  # API routes
- ┣ 📂 frontend
- ┃ ┣ 📜 index.html  # Web interface
- ┃ ┣ 📜 styles.css  # CSS styling
- ┃ ┗ 📜 script.js  # JavaScript interactivity
- ┣ 📜 requirements.txt  # Dependencies list
- ┣ 📜 README.md  # Project documentation
- ┗ 📜 .gitignore  # Ignored files
-```
 
 ## Contributing
 Contributions are welcome! Feel free to submit issues, feature requests, or pull requests.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-For any queries, reach out to:
-- **Email:** your-email@example.com
-- **GitHub:** [your-username](https://github.com/your-username)
