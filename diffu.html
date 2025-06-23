@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Diffusion Prediction Model</title>
-  <link rel="stylesheet" href="difupred.css">
+  <link rel="stylesheet" href="difupred.css" />
 </head>
 <body>
-    <div class="background">
-        <div class="form-container">
-            <h1>DIFFUSION PREDICTION MODEL</h1>
-            <!-- Add an ID to your form for JavaScript targeting -->
-            <form id="diffusion-form">
-                <label for="likes">Enter Number of Likes</label>
-                <input type="number" id="likes" name="likes" step="0.01" required>
+  <div class="background">
+    <div class="form-container">
+      <h1>DIFFUSION PREDICTION MODEL</h1>
+      <form id="diffusion-form">
+        <label for="likes">Enter Number of Likes</label>
+        <input type="number" id="likes" name="likes" step="0.01" required>
 
-                <label for="shares">Enter Number of Shares</label>
-                <input type="number" id="shares" name="shares" step="0.01" required>
+        <label for="shares">Enter Number of Shares</label>
+        <input type="number" id="shares" name="shares" step="0.01" required>
 
-                <label for="comments">Enter Number of Comments</label>
-                <input type="number" id="comments" name="comments" step="0.01" required>
+        <label for="comments">Enter Number of Comments</label>
+        <input type="number" id="comments" name="comments" step="0.01" required>
 
-                <label for="engagement-rate">Enter Engagement Rate (%)</label>
-                <input type="number" id="engagement-rate" name="engagement-rate" step="0.1" required>
+        <label for="engagement-rate">Enter Engagement Rate (%)</label>
+        <input type="number" id="engagement-rate" name="engagement-rate" step="0.1" required>
 
-                <!-- Set button type to "submit" -->
-                <button type="submit">Misinformation Status</button>
-            </form>
-            <div id="result"></div> <!-- Container for displaying the result -->
-        </div>
+        <button type="submit">Misinformation Status</button>
+      </form>
+      <div id="result"></div>
     </div>
-    <script src="diffusion.js"></script>
+  </div>
+  <script src="diffusion.js"></script>
 </body>
 </html>
