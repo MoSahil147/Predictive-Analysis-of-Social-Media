@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virality Score</title>
-    <link rel="stylesheet" href="virality_score.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Virality Score</title>
+  <link rel="stylesheet" href="virality_score.css">
 </head>
 <body>
-    <div class="score-container">
-        <h1>VIRALITY SCORE</h1>
-        <div id="score-box">Score</div>
-    </div>
+  <h1>VIRALITY SCORE</h1>
+  <div id="score-box" class="score-btn">Loading…</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const scoreBox = document.getElementById("score-box");
-            const viralityScore = localStorage.getItem("viralityScore");
-
-            if (viralityScore) {
-                scoreBox.textContent = `Score: ${viralityScore}%`;
-            } else {
-                scoreBox.textContent = "Score not available.";
-            }
-        });
-    </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const box   = document.getElementById("score-box");
+      const score = sessionStorage.getItem("viralityScore");
+      box.textContent = score ? `Score: ${score}%` : "SCORE NOT AVAILABLE.";
+    });
+  </script>
 </body>
 </html>

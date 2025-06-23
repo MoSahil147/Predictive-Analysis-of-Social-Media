@@ -2,28 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Influencer Score</title>
   <link rel="stylesheet" href="influencer_score.css">
 </head>
 <body>
-    <div class="score-container">
-        <h1>INFLUENCER SCORE</h1>
-        <div id="score-box">Score</div>
-    </div>
+  <h1>INFLUENCER SCORE</h1>
+  <div id="score-box" class="score-btn">Loading…</div>
 
-    <script>
-        // Display the influencer score from sessionStorage
-        document.addEventListener("DOMContentLoaded", () => {
-            const scoreBox = document.getElementById("score-box");
-            const influencerScore = sessionStorage.getItem("influencerScore");
-
-            if (influencerScore) {
-                scoreBox.textContent = `Score: ${influencerScore}%`;
-            } else {
-                scoreBox.textContent = "No score available.";
-            }
-        });
-    </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const score = sessionStorage.getItem("influencerScore");
+      document.getElementById("score-box").textContent =
+        score ? `Score: ${score}%` : "SCORE NOT AVAILABLE.";
+    });
+  </script>
 </body>
 </html>

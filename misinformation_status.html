@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Misinformation Status</title>
-  <link rel="stylesheet" href="misinformation_status.css" />
+  <link rel="stylesheet" href="misinformation_status.css">
 </head>
 <body>
-  <div class="score-container">
-    <h1>MISINFORMATION STATUS</h1>
-    <div id="score-box">Loading...</div>
-  </div>
+  <h1>MISINFORMATION SCORE</h1>
+  <div id="score-box" class="score-btn">Loading…</div>
 
-  <script src="misinformation_status.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const score = sessionStorage.getItem("misinformationScore");
+      document.getElementById("score-box").textContent =
+        score ? `Score: ${score}%` : "SCORE NOT AVAILABLE.";
+    });
+  </script>
 </body>
 </html>
