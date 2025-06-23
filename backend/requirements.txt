@@ -3,3 +3,6 @@ uvicorn
 joblib
 pandas
 scikit-learn
+fastapi
+uvicorn
+pydantic
