@@ -21,6 +21,16 @@ The application uses a set of machine learning models trained on various social 
 
 - **Misinformation Detection (Classification):** We use a `LightGBM Classifier` to predict the likelihood of a post being misinformation. This model is fast and efficient, making it a good choice for this task.
 
+## Visual Overview
+
+### Project Working Demo
+
+![Project Working](Project.gif)
+
+### System Architecture
+
+![System Architecture](Project%20Working.png)
+
 ## Tech Stack
 
 - **Backend:** Python, FastAPI, Uvicorn
