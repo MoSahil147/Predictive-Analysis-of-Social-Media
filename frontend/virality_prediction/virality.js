@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const r = await fetch(
-        "https://predictive-analysis-of-social-media.onrender.com/virality",
+        "http://127.0.0.1:8000/virality",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!r.ok) throw new Error();
       const data = await r.json();
       sessionStorage.setItem("viralityScore", data.viralityScore);
-      window.location.href = "virality_score.html";
+      window.location.href = "score/virality_score.html";
     } catch {
       result.textContent = "Error connecting to backend.";
     }
