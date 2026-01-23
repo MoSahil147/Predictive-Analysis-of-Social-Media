@@ -1,0 +1,14 @@
+[project]
+name = "predictive-analysis-backend"
+version = "0.1.0"
+description = "Backend for the Predictive Analysis of Social Media project"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "joblib",
+    "pandas",
+    "scikit-learn",
+    "pydantic",
+    "lightgbm",
+    "xgboost",
+]
