@@ -91,34 +91,6 @@ Follow these instructions to get the project up and running on your local machin
 
 ---
 
-## Model Performance
-
-Here are the latest performance metrics for our prediction models.
-
-### Virality Model
-| Metric             | Value    |
-| ------------------ | -------- |
-| Mean Squared Error | 0.230    |
-| R2 Score           | -0.076   |
-
-### Influencer Model
-| Metric    | Value |
-| --------- | ----- |
-| Accuracy  | 0.528 |
-| Precision | 0.398 |
-| Recall    | 0.323 |
-| F1 Score  | 0.357 |
-
-### Diffusion (Misinformation) Model
-| Metric    | Value |
-| --------- | ----- |
-| Accuracy  | 0.618 |
-| Precision | 0.158 |
-| Recall    | 0.210 |
-| F1 Score  | 0.180 |
-
----
-
 ## Regards
 
 I made this project as my 2nd year University Project, still working and improving on it.
