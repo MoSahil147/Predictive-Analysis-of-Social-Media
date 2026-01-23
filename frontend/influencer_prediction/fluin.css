@@ -11,7 +11,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('Back.jpg') no-repeat center center fixed;
+    background: url('../Back.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #FFFFFF;
 }
