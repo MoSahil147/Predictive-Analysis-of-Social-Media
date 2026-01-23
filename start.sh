@@ -1,2 +1,10 @@
 #!/bin/bash
-uvicorn backend.app:app --host 0.0.0.0 --port 10000
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Install dependencies
+uv pip install -r requirements.txt
+
+# Run backend server
+uvicorn backend.app:app --reload
