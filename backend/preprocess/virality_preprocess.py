@@ -1,11 +1,14 @@
-import pandas as pd  # For data manipulation and analysis
+import pandas as pd
 
-# Load data from a CSV file
+## This function loads data from a CSV file into a pandas DataFrame.
 def load_data(filepath):
+    ## It takes the file path as input and returns the loaded DataFrame.
     return pd.read_csv(filepath)
 
-# Preprocess the data for model input
+## This function preprocesses the data for the virality model.
 def preprocess_data(df):
-    X = df[['likes', 'shares', 'comments', 'weak_ties']]  # Features
-    y = df['virality_label']  # Target variable
+    ## It selects the features (X) and the target variable (y) from the DataFrame.
+    X = df[['likes', 'shares', 'comments', 'weak_ties']]
+    ## The target variable is 'virality_label', which is a numerical score representing virality.
+    y = df['virality_label']
     return X, y
