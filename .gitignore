@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Virtual environment
+.venv
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Unused files
+backend/convert_to_onnx/
+Test Section over Console/
+backend/data/generate_data.py
+backend/models/diffusion_model.py
+backend/models/influencer_model.py
+backend/models/virality_model.py
