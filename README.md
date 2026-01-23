@@ -1,58 +1,115 @@
-# Social Media Virality Prediction
+# Predictive Analysis of Social Media
 
-## Overview
-The **Social Media Virality Prediction** project is a machine learning-based system designed to predict the virality of social media content. The system utilizes various factors such as likes, shares, and comments to determine the potential reach and influence of a given post. It also includes functionalities for identifying influential spreaders in online networks.
+This project is a web application that uses machine learning to predict the virality of social media content, identify potential influencers, and detect the spread of misinformation.
 
-## Features
-- Predicts virality of social media posts based on user engagement metrics.
-- Identifies influential spreaders in online networks.
-- Uses deep learning models such as RNNs, GNNs, and CNNs for real-time analysis.
-- Web-based interface for users to upload content and predict viral potential.
+## Key Features
+
+- **Virality Prediction:** Predicts how likely a post is to go viral based on engagement metrics.
+- **Influencer Identification:** Identifies users who are likely to be influential in a network.
+- **Misinformation Detection:** Analyzes content to predict its likelihood of being misinformation.
+- **Web-Based Interface:** An easy-to-use interface to interact with the prediction models.
+
+## How It Works
+
+The application uses a set of machine learning models trained on various social media metrics. The backend is built with FastAPI and serves the prediction models through a REST API. The frontend is a simple HTML/CSS/JavaScript application that allows users to input data and get predictions from the backend.
+
+### The Models
+
+- **Virality Prediction (Regression):** We use an `XGBoost Regressor` to predict a numerical virality score. This model is well-suited for capturing complex relationships in the data.
+
+- **Influencer Identification (Classification):** An `XGBoost Classifier` is used to determine whether a user is an influencer. This is a binary classification task.
+
+- **Misinformation Detection (Classification):** We use a `LightGBM Classifier` to predict the likelihood of a post being misinformation. This model is fast and efficient, making it a good choice for this task.
 
 ## Tech Stack
-- **Backend:** FastAPI, Python, Uvicorn
+
+- **Backend:** Python, FastAPI, Uvicorn
 - **Frontend:** HTML, CSS, JavaScript
-- **Database:** PostgreSQL (or any preferred database)
-- **Machine Learning Models:** TensorFlow / PyTorch
+- **ML Environment:** `uv` for package and environment management
 
-## Installation
+---
+
+## Getting Started
+
+Follow these instructions to get the project up and running on your local machine.
+
 ### Prerequisites
-Ensure you have the following installed:
-- Python 3.8+
-- pip (Python package manager)
-- Virtual environment (optional but recommended)
 
-### Steps to Set Up
-#### 1. Clone the repository:
-```sh
-git clone https://github.com/your-username/social-media-virality.git
-cd social-media-virality
-```
+- [Python 3.8+](https://www.python.org/downloads/)
+- [uv](https://github.com/astral-sh/uv) (a fast Python package installer and resolver)
 
-#### 2. Create and activate a virtual environment (optional but recommended):
-```sh
-python -m venv venv
-source venv/bin/activate  # On macOS/Linux
-venv\Scripts\activate  # On Windows
-```
+### Installation & Setup
 
-#### 3. Install dependencies:
-```sh
-pip install -r requirements.txt
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/Predictive-Analysis-of-Social-Media.git
+    cd Predictive-Analysis-of-Social-Media
+    ```
 
-#### 4. Start the backend server:
-```sh
-uvicorn backend.app:app --reload
-```
+2.  **Set up the backend environment using `uv`:**
+    
+    First, create a virtual environment:
+    ```bash
+    uv venv
+    ```
+    
+    Then, activate the environment:
+    - On macOS/Linux:
+      ```bash
+      source .venv/bin/activate
+      ```
+    - On Windows:
+      ```bash
+      .venv\Scripts\activate
+      ```
+    
+    Finally, install the required packages:
+    ```bash
+    uv sync
+    ```
 
-This command starts the FastAPI backend with automatic reloading during development.
+### Running the Application
 
-#### 5. Access the API:
-Once the server is running, open your browser and go to:
-- **API Documentation (Swagger UI):** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **Redoc UI:** [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+1.  **Start the backend server:**
+    ```bash
+    uvicorn backend.app:app --reload
+    ```
+    The backend will be running at `http://127.0.0.1:8000`.
 
+2.  **Open the frontend:**
+    Navigate to the `frontend` directory and open the `index.html` file in your web browser.
 
-## Contributing
-Contributions are welcome! Feel free to submit issues, feature requests, or pull requests.
+---
+
+## Model Performance
+
+Here are the latest performance metrics for our prediction models.
+
+### Virality Model
+| Metric             | Value    |
+| ------------------ | -------- |
+| Mean Squared Error | 0.230    |
+| R2 Score           | -0.076   |
+
+### Influencer Model
+| Metric    | Value |
+| --------- | ----- |
+| Accuracy  | 0.528 |
+| Precision | 0.398 |
+| Recall    | 0.323 |
+| F1 Score  | 0.357 |
+
+### Diffusion (Misinformation) Model
+| Metric    | Value |
+| --------- | ----- |
+| Accuracy  | 0.618 |
+| Precision | 0.158 |
+| Recall    | 0.210 |
+| F1 Score  | 0.180 |
+
+---
+
+## Regards
+
+I made this project as my 2nd year University Project, still working and improving on it.
+
